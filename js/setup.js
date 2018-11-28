@@ -19,6 +19,8 @@ var getRandomInt = function (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
+var fragment = document.createDocumentFragment();
+
 for (var i = 0; i < 4; i++) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
 
@@ -26,7 +28,8 @@ for (var i = 0; i < 4; i++) {
   wizardElement.querySelector('.wizard-coat').style.fill = colorToCoat[getRandomInt(0, (colorToCoat.length - 1))];
   wizardElement.querySelector('.wizard-eyes').style.fill = colorToEyes[getRandomInt(0, (colorToEyes.length - 1))];
 
-  similarListElement.appendChild(wizardElement);
+  fragment.appendChild(wizardElement);
 }
+similarListElement.appendChild(fragment);
 
 document.querySelector('.setup-similar').classList.remove('hidden');
