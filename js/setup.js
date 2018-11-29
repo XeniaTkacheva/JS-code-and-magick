@@ -61,15 +61,23 @@ var renderWizard = function (wizardsArray) {
   return wizardElement;
 };
 
-for (var i = 0; i < WIZARDS_COUNT; i++) {
-  fragment.appendChild(renderWizard(wizards[i]));
-}
+// Функция добавления JS элементов
 
-similarListElement.appendChild(fragment);
+var addWizards = function (listElement, count) {
+  for (var i = 0; i < count; i++) {
+    fragment.appendChild(renderWizard(wizards[i]));
+  }
+  listElement.appendChild(fragment);
+};
 
 var showSetupSimilar = function () {
   document.querySelector('.setup-similar').classList.remove('hidden');
 };
 
-showUserDialog();
-showSetupSimilar();
+function init() {
+  showUserDialog();
+  addWizards(similarListElement, WIZARDS_COUNT);
+  showSetupSimilar();
+}
+
+init();
